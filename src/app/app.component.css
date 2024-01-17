@@ -1,0 +1,213 @@
+/* app.component.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    overflow-y: hidden;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+}
+
+.logo-container {
+    flex-grow: 1;
+}
+
+.logo {
+    color: #fff;
+}
+
+.nav-cart-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.cart {
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+main {
+    padding: 70px 20px 20px; /* Altura del encabezado + espacio adicional */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    transition: padding 0.3s ease;
+}
+
+.provider {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.provider:hover {
+    transform: scale(1.1);
+}
+
+.provider.expanded {
+    transform: scale(1.1);
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 100%;
+    max-width: 800px; /* O ajusta según sea necesario */
+    padding-top: 70px; /* Altura del encabezado */
+}
+
+.expanded-details {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+
+}
+
+.product-box {
+    display: flex;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.product-box img {
+    max-width: 80px;
+    margin-right: 10px;
+}
+
+.product-info {
+    flex-grow: 1;
+}
+
+.provider-content {
+    display: flex;
+    align-items: center;
+}
+
+.provider-image {
+    max-width: 200px;
+    margin-right: 20px;
+}
+
+.provider-info {
+    flex-grow: 1;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+
+    .provider {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+    }
+
+    .provider-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .provider-image {
+        max-width: 150px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Desactivar la interacción del mouse en todo el cuerpo cuando el proveedor está expandido */
+body.provider-expanded {
+    pointer-events: none;
+    overflow-y: auto;
+}
+
+/* Reactivar la interacción del mouse en el proveedor expandido */
+.provider.expanded {
+    transform: scale(1.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%; /* Puedes ajustar el ancho según tus preferencias */
+    max-width: 90000px; /* O ajusta según sea necesario */
+    padding-top: 0px; /* Altura del encabezado */
+    overflow-y: scroll;
+    overflow: hidden;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ancho del viewport */
+    height: 100vh; /* Altura del viewport */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    z-index: 999; /* Asegura que el overlay esté encima de otros elementos */
+    display: none; /* Inicialmente oculto */
+}
+.expanded {
+    transform: scale(1.1);
+    height: auto;
+    margin: 0;
+    flex: 0 0 calc(100% - 40px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Asegura que el proveedor expandido esté encima del overlay */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Efecto de sombra alrededor del proveedor expandido */
+}
+.overlay.expanded {
+    display: block; /* Muestra el overlay cuando el proveedor está expandido */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Efecto de sombra alrededor del overlay cuando se expande el proveedor */
+}
+body.expanded {
+    overflow: hidden; /* Evita el desplazamiento del body cuando el proveedor está expandido */
+}
